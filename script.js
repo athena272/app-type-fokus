@@ -26,7 +26,7 @@ let tempoDecorridoEmSegundos = 25;
 mostrarTempo()
 
 function alterarBanner(contexto) {
-    banner.setAttribute('src', `/imagens/${contexto}.png`)
+    banner.setAttribute('src', `./imagens/${contexto}.png`)
 
     switch (contexto) {
         case "foco":
@@ -123,13 +123,13 @@ function iniciarOuPausar() {
     }
     audioPlay.play();
     startPauseBtnText.textContent = "Pausar"
-    startPauseBtnIcon.setAttribute('src', `/imagens/pause.png`)
+    startPauseBtnIcon.setAttribute('src', `./imagens/pause.png`)
     intervaloId = setInterval(contagemRegressiva, 1000)
 }
 
 function zerar() {
     clearInterval(intervaloId)
-    startPauseBtnIcon.setAttribute('src', `/imagens/play_arrow.png`)
+    startPauseBtnIcon.setAttribute('src', `./imagens/play_arrow.png`)
     startPauseBtnText.textContent = "Começar"
     intervaloId = null
 }
