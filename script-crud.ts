@@ -8,7 +8,7 @@ interface EstadoAplicacao {
     tarefaSelecionada: Tarefa | null
 }
 
-let estado: EstadoAplicacao = {
+let estadoInicial: EstadoAplicacao = {
     tarefas: [
         {
             descricao: 'Tarefa concluída',
@@ -26,3 +26,26 @@ let estado: EstadoAplicacao = {
 
     tarefaSelecionada: null
 }
+
+const selecionarTarefa = (estado: EstadoAplicacao, tarefa: Tarefa): EstadoAplicacao => {
+
+    return {
+        ...estado,
+        tarefaSelecionada: tarefa === estado.tarefaSelecionada ? null : tarefa
+    }
+}
+
+const atualizarUI = () => {
+    const ulTarefas = document.querySelector('.app__section-task-list')
+    if (ulTarefas) {
+        ulTarefas.innerHTML = ''
+    }
+
+    estadoInicial.tarefas.forEach(tarefa => {
+        const li = document.createElement('li')
+        li.classList.add('app__section-task-list-item')
+    })
+}
+
+
+
