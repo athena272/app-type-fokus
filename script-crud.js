@@ -19,7 +19,9 @@ let estadoInicial = {
 const selecionarTarefa = (estado, tarefa) => {
     return Object.assign(Object.assign({}, estado), { tarefaSelecionada: tarefa === estado.tarefaSelecionada ? null : tarefa });
 };
-// código omitido
+const adicionarTarefa = (estado, tarefa) => {
+    return Object.assign(Object.assign({}, estado), { tarefas: [...estado.tarefas, tarefa] });
+};
 const atualizarUI = () => {
     const taskIconSvg = `
         <svg class="app__section-task-icon-status" width="24" height="24" viewBox="0 0 24 24"
@@ -31,6 +33,24 @@ const atualizarUI = () => {
         </svg>
     `;
     const ulTarefas = document.querySelector('.app__section-task-list');
+    const formAdicionarTarefa = document.querySelector('.app__form-add-task');
+    const btnAdicionarTarefa = document.querySelector('.app__button--add-task');
+    const textarea = document.querySelector('.app__form-textarea');
+    if (!btnAdicionarTarefa) {
+        throw Error("Caro colega, o elemento btnAdicionarTarefa não foi encontrado. Favor rever.");
+    }
+    btnAdicionarTarefa.onclick = () => {
+        formAdicionarTarefa === null || formAdicionarTarefa === void 0 ? void 0 : formAdicionarTarefa.classList.toggle('hidden');
+    };
+    formAdicionarTarefa.onsubmit = (event) => {
+        event.preventDefault();
+        const descricao = textarea.value;
+        estadoInicial = adicionarTarefa(estadoInicial, {
+            descricao,
+            concluida: false
+        });
+        atualizarUI();
+    };
     if (ulTarefas) {
         ulTarefas.innerHTML = '';
     }
@@ -54,6 +74,12 @@ const atualizarUI = () => {
         li.appendChild(svgIcon);
         li.appendChild(paragraph);
         li.appendChild(button);
+        li.addEventListener('click', () => {
+            console.log('A tarefa foi clicada', tarefa);
+            estadoInicial = selecionarTarefa(estadoInicial, tarefa);
+            atualizarUI();
+        });
         ulTarefas === null || ulTarefas === void 0 ? void 0 : ulTarefas.appendChild(li);
     });
 };
+atualizarUI();
