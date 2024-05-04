@@ -30,6 +30,14 @@ const atualizarUI = () => {
         </svg>
     `;
     const ulTarefas = document.querySelector('.app__section-task-list');
+    const formAdicionarTarefa = document.querySelector('.app__form-add-task');
+    const btnAdicionarTarefa = document.querySelector('.app__button--add-task');
+    if (!btnAdicionarTarefa) {
+        throw Error("Caro colega, o elemento btnAdicionarTarefa não foi encontrado. Favor rever.");
+    }
+    btnAdicionarTarefa.onclick = () => {
+        formAdicionarTarefa === null || formAdicionarTarefa === void 0 ? void 0 : formAdicionarTarefa.classList.toggle('hidden');
+    };
     if (ulTarefas) {
         ulTarefas.innerHTML = '';
     }
