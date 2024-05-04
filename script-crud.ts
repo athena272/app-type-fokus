@@ -35,8 +35,6 @@ const selecionarTarefa = (estado: EstadoAplicacao, tarefa: Tarefa): EstadoAplica
     }
 }
 
-// código omitido
-
 const atualizarUI = () => {
     const taskIconSvg = `
         <svg class="app__section-task-icon-status" width="24" height="24" viewBox="0 0 24 24"
@@ -58,11 +56,9 @@ const atualizarUI = () => {
         const svgIcon = document.createElement('svg')
         svgIcon.innerHTML = taskIconSvg
 
-
         const paragraph = document.createElement('p')
         paragraph.classList.add('app__section-task-list-item-description')
         paragraph.textContent = tarefa.descricao
-
 
         const button = document.createElement('button')
         button.classList.add('app_button-edit')
