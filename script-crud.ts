@@ -46,6 +46,17 @@ const atualizarUI = () => {
         </svg>
     `
     const ulTarefas = document.querySelector('.app__section-task-list')
+    const formAdicionarTarefa = document.querySelector<HTMLFormElement>('.app__form-add-task')
+    const btnAdicionarTarefa = document.querySelector<HTMLButtonElement>('.app__button--add-task')
+
+    if (!btnAdicionarTarefa) {
+        throw Error("Caro colega, o elemento btnAdicionarTarefa não foi encontrado. Favor rever.")
+    }
+
+    btnAdicionarTarefa.onclick = () => {
+        formAdicionarTarefa?.classList.toggle('hidden')
+    }
+
     if (ulTarefas) {
         ulTarefas.innerHTML = ''
     }
@@ -80,6 +91,8 @@ const atualizarUI = () => {
         ulTarefas?.appendChild(li)
     })
 }
+
+
 
 
 
