@@ -92,8 +92,4 @@ const atualizarUI = () => {
     })
 }
 
-
-
-
-
-
+atualizarUI()
