@@ -1,22 +1,23 @@
 // script.ts
 
 // Declaração de variáveis globais
-const focoBtn: HTMLElement | null = document.querySelector('.app__card-button--foco');
-const shortBtn: HTMLElement | null = document.querySelector('.app__card-button--short');
-const longBtn: HTMLElement | null = document.querySelector('.app__card-button--long');
-const html: HTMLElement | null = document.querySelector("html");
+// const focoBtn: HTMLElement | null = document.querySelector('.app__card-button--foco');
+const focoBtn = document.querySelector<HTMLButtonElement>('.app__card-button--foco');
+const shortBtn = document.querySelector<HTMLButtonElement>('.app__card-button--short');
+const longBtn = document.querySelector<HTMLButtonElement>('.app__card-button--long');
+const html = document.querySelector<HTMLButtonElement>("html");
 
-const banner: HTMLImageElement | null = document.querySelector(".app__section-banner-container .app__image");
+const banner = document.querySelector<HTMLImageElement>(".app__section-banner-container .app__image");
 
-const titulo: HTMLElement | null = document.querySelector(".app__title");
+const titulo = document.querySelector<HTMLElement>(".app__title");
 
-const timer: HTMLElement | null = document.querySelector("#timer");
-const startPauseBtn: HTMLElement | null = document.querySelector("#start-pause");
-const startPauseBtnText: HTMLElement | null = document.querySelector("#start-pause span");
-const startPauseBtnIcon: HTMLImageElement | null = document.querySelector(".app__card-primary-butto-icon");
+const timer = document.querySelector<HTMLElement>("#timer");
+const startPauseBtn = document.querySelector<HTMLButtonElement>("#start-pause");
+const startPauseBtnText = document.querySelector<HTMLButtonElement>("#start-pause span");
+const startPauseBtnIcon = document.querySelector<HTMLImageElement>(".app__card-primary-butto-icon");
 
-const buttons: NodeListOf<HTMLElement> = document.querySelectorAll('.app__card-button');
-const musicaFocoInput: HTMLInputElement | null = document.querySelector('#alternar-musica');
+const buttons: NodeListOf<HTMLButtonElement> = document.querySelectorAll('.app__card-button');
+const musicaFocoInput = document.querySelector<HTMLInputElement>('#alternar-musica');
 
 const audioPlay: HTMLAudioElement = new Audio('./sons/play.wav');
 const audioPause: HTMLAudioElement = new Audio('./sons/pause.mp3');
