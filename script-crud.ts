@@ -47,10 +47,10 @@ const adicionarTarefa = (estado: EstadoAplicacao, tarefa: Tarefa): EstadoAplicac
 // Deleta uma tarefa. Retorna um novo estado.
 const deletar = (estado: EstadoAplicacao): EstadoAplicacao => {
     if (estado.tarefaSelecionada) {
-        const tarefas = estado.tarefas.filter(t => t != estado.tarefaSelecionada);
-        return { ...estado, tarefas, tarefaSelecionada: null, editando: false };
+        const tarefas = estado.tarefas.filter(t => t != estado.tarefaSelecionada)
+        return { ...estado, tarefas, tarefaSelecionada: null, editando: false }
     } else {
-        return estado;
+        return estado
     }
 }
 
@@ -135,23 +135,23 @@ const atualizarUI = () => {
     }
 
     btnCancelar.onclick = () => {
-        formAdicionarTarefa!.classList.add('hidden');
+        formAdicionarTarefa!.classList.add('hidden')
     }
 
     btnDeletar.onclick = () => {
-        estadoInicial = deletar(estadoInicial);
-        formAdicionarTarefa!.classList.add('hidden');
-        atualizarUI();
+        estadoInicial = deletar(estadoInicial)
+        formAdicionarTarefa!.classList.add('hidden')
+        atualizarUI()
     }
 
     btnDeletarConcluidas.onclick = () => {
-        estadoInicial = deletarTodasConcluidas(estadoInicial);
-        atualizarUI();
+        estadoInicial = deletarTodasConcluidas(estadoInicial)
+        atualizarUI()
     }
 
     btnDeletarTodas.onclick = () => {
-        estadoInicial = deletarTodas(estadoInicial);
-        atualizarUI();
+        estadoInicial = deletarTodas(estadoInicial)
+        atualizarUI()
     }
 
     if (ulTarefas) {
@@ -197,9 +197,9 @@ const atualizarUI = () => {
 
         // Adicionar evento de clique para editar uma tarefa
         editIcon.onclick = (evento) => {
-            evento.stopPropagation();
-            estadoInicial = editarTarefa(estadoInicial, tarefa);
-            atualizarUI();
+            evento.stopPropagation()
+            estadoInicial = editarTarefa(estadoInicial, tarefa)
+            atualizarUI()
         }
 
         ulTarefas?.appendChild(li)
@@ -208,9 +208,9 @@ const atualizarUI = () => {
 
 document.addEventListener('TarefaFinalizada', () => {
     if (estadoInicial.tarefaSelecionada) {
-        estadoInicial.tarefaSelecionada.concluida = true;
-        atualizarUI();
+        estadoInicial.tarefaSelecionada.concluida = true
+        atualizarUI()
     }
-});
+})
 
 atualizarUI()
